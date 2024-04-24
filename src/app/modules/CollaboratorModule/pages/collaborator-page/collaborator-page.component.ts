@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
+import { CollaboratorService } from '../../services/collaborator.service';
 
 @Component({
   selector: 'app-collaborator-page',
@@ -9,8 +10,24 @@ import { TableModule } from 'primeng/table';
   templateUrl: './collaborator-page.component.html',
   styleUrl: './collaborator-page.component.css',
 })
-export class CollaboratorPageComponent {
-  products!: [];
+export class CollaboratorPageComponent implements OnInit {
+  collaborators!: [];
 
-  constructor() {}
+  constructor(private collaboratorService: CollaboratorService) {}
+
+  ngOnInit(): void {
+    this.getAllCollaborators();
+  }
+
+  getAllCollaborators() {
+    this.collaboratorService.getAllCollaborators().subscribe(
+      (response: any) => {
+        console.log(response);
+        this.collaborators = response;
+      },
+      (error) => {
+        console.warn(error);
+      }
+    );
+  }
 }

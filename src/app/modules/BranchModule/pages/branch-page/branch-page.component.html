@@ -1,6 +1,6 @@
 <div class="card">
   <h1>Tabla de Sucursales</h1>
-  <p-table [value]="products" [tableStyle]="{ 'min-width': '50rem' }">
+  <p-table [value]="branches" [tableStyle]="{ 'min-width': '50rem' }">
     <ng-template pTemplate="header">
       <tr>
         <th>Codigo de Sucursal</th>
@@ -8,11 +8,11 @@
         <th>Direccion</th>
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-product>
+    <ng-template pTemplate="body" let-branch>
       <tr>
-        <td>{{ product.code }}</td>
-        <td>{{ product.name }}</td>
-        <td>{{ product.category }}</td>
+        <td>{{ branch.id }}</td>
+        <td>{{ branch.name }}</td>
+        <td>{{ branch.address }}</td>
       </tr>
     </ng-template>
     <ng-template pTemplate="emptymessage">

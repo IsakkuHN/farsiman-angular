@@ -1,6 +1,6 @@
 <div class="card">
   <h1>Tabla de Colaboradores</h1>
-  <p-table [value]="products" [tableStyle]="{ 'min-width': '50rem' }">
+  <p-table [value]="collaborators" [tableStyle]="{ 'min-width': '50rem' }">
     <ng-template pTemplate="header">
       <tr>
         <th>Codigo</th>
@@ -8,11 +8,11 @@
         <th>Apellido</th>
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-product>
+    <ng-template pTemplate="body" let-collaborator>
       <tr>
-        <td>{{ product.code }}</td>
-        <td>{{ product.name }}</td>
-        <td>{{ product.category }}</td>
+        <td>{{ collaborator.id }}</td>
+        <td>{{ collaborator.firstName }}</td>
+        <td>{{ collaborator.lastName }}</td>
       </tr>
     </ng-template>
     <ng-template pTemplate="emptymessage">

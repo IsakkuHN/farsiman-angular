@@ -14,11 +14,11 @@
   </div>
 
 
-  <p-table [value]="products" [tableStyle]="{ 'min-width': '50rem' }">
+  <p-table [value]="travels" [tableStyle]="{ 'min-width': '50rem' }">
     <ng-template pTemplate="header">
       <tr>
         <th>Codigo de Viaje</th>
-        <th>Fecha del Viae</th>
+        <th>Fecha del Viaje</th>
         <th>Sucursal</th>
         <th>Distancia Total</th>
         <th>Codigo de Conductor</th>
@@ -27,11 +27,16 @@
         <th>Ver Detalles</th>
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-product>
+    <ng-template pTemplate="body" let-travel>
       <tr>
-        <td>{{ product.code }}</td>
-        <td>{{ product.name }}</td>
-        <td>{{ product.category }}</td>
+        <td>{{ travel.id }}</td>
+        <td>{{ travel.travelDate }}</td>
+        <td>{{ travel.branch.name }}</td>
+        <td>{{travel.travelDistance}} km</td>
+        <td>{{travel.driver.id}}</td>
+        <td>{{travel.driver.firstName + ' ' + travel.driver.lastName}}</td>
+        <td>{{travel.paid?'Pendiente':'Pagado'}}</td>
+        <td><p-button label="Ver mas"></p-button></td>
       </tr>
     </ng-template>
     <ng-template pTemplate="emptymessage">

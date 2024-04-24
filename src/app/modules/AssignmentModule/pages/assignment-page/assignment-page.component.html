@@ -13,7 +13,7 @@
       (onClick)="showDialog()"></p-button>
   </div>
 
-  <p-table [value]="products" [tableStyle]="{ 'min-width': '50rem' }">
+  <p-table [value]="assignments" [tableStyle]="{ 'min-width': '50rem' }">
     <ng-template pTemplate="header">
       <tr>
         <th>Codigo de Colaborador</th>
@@ -22,11 +22,12 @@
         <th>Distancia</th>
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-product>
+    <ng-template pTemplate="body" let-assigment>
       <tr>
-        <td>{{ product.code }}</td>
-        <td>{{ product.name }}</td>
-        <td>{{ product.category }}</td>
+        <td>{{ assigment.collaborator.id }}</td>
+        <td>{{ assigment.collaborator.firstName + ' ' + assigment.collaborator.lastName}}</td>
+        <td>{{ assigment.branch.name + ' '+ assigment.branch.address}}</td>
+        <td>{{ assigment.distance }} km</td>
       </tr>
     </ng-template>
     <ng-template pTemplate="emptymessage">
