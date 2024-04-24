@@ -6,6 +6,7 @@ import { BranchPageComponent } from './modules/BranchModule/pages/branch-page/br
 import { AssignmentPageComponent } from './modules/AssignmentModule/pages/assignment-page/assignment-page.component';
 import { TravelPageComponent } from './modules/TravelModule/pages/travel-page/travel-page.component';
 import { ReportPageComponent } from './modules/ReportModule/pages/report-page/report-page.component';
+import { authenticationGuard } from './modules/SharedModule/guards/authentication.guard';
 
 export const routes: Routes = [
   {
@@ -19,6 +20,7 @@ export const routes: Routes = [
   {
     path: 'home',
     component: HomePageComponent,
+    canActivate: [authenticationGuard],
     children: [
       {
         path: 'collaborator',

@@ -8,7 +8,7 @@
     <li><a routerLinkActive="active" routerLink="/home/travel">Viajes</a></li>
     <li><a routerLinkActive="active" routerLink="/home/report">Reportes</a></li>
     <div class="bottom">
-      <p-button severity="danger" routerLink="/auth">Cerrar Sesión</p-button>
+      <p-button severity="danger" (onClick)="logout()">Cerrar Sesión</p-button>
     </div>
   </ul>
 
