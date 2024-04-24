@@ -1,0 +1,9 @@
+.container {
+  margin-left: 20rem;
+  margin-top: 0rem;
+  padding: 0;
+  max-width: 80vw;
+  max-height: 90vh;
+  min-height: 100vh;
+  box-sizing: border-box;
+}

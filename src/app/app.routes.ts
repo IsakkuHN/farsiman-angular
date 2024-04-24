@@ -1,6 +1,11 @@
 import { Routes } from '@angular/router';
 import { LoginPageComponent } from './modules/AuthModule/pages/login-page/login-page.component';
 import { HomePageComponent } from './modules/HomeModule/pages/home-page/home-page.component';
+import { CollaboratorPageComponent } from './modules/CollaboratorModule/pages/collaborator-page/collaborator-page.component';
+import { BranchPageComponent } from './modules/BranchModule/pages/branch-page/branch-page.component';
+import { AssignmentPageComponent } from './modules/AssignmentModule/pages/assignment-page/assignment-page.component';
+import { TravelPageComponent } from './modules/TravelModule/pages/travel-page/travel-page.component';
+import { ReportPageComponent } from './modules/ReportModule/pages/report-page/report-page.component';
 
 export const routes: Routes = [
   {
@@ -12,46 +17,31 @@ export const routes: Routes = [
   },
 
   {
-    path: 'collaborator',
-    loadChildren: () =>
-      import(
-        './modules/CollaboratorModule/pages/collaborator-page/collaborator-page.component'
-      ).then((m) => m.CollaboratorPageComponent),
-    outlet: 'main',
+    path: 'home',
+    component: HomePageComponent,
+    children: [
+      {
+        path: 'collaborator',
+        component: CollaboratorPageComponent,
+      },
+      {
+        path: 'branch',
+        component: BranchPageComponent,
+      },
+      {
+        path: 'assignment',
+        component: AssignmentPageComponent,
+      },
+      {
+        path: 'travel',
+        component: TravelPageComponent,
+      },
+      {
+        path: 'report',
+        component: ReportPageComponent,
+      },
+    ],
   },
-  {
-    path: 'branch',
-    loadChildren: () =>
-      import(
-        './modules/BranchModule/pages/branch-page/branch-page.component'
-      ).then((m) => m.BranchPageComponent),
-    outlet: 'main',
-  },
-  {
-    path: 'assignments',
-    loadChildren: () =>
-      import(
-        './modules/AssignmentModule/pages/assignment-page/assignment-page.component'
-      ).then((m) => m.AssignmentPageComponent),
-    outlet: 'main',
-  },
-  {
-    path: 'travel',
-    loadChildren: () =>
-      import(
-        './modules/TravelModule/pages/travel-page/travel-page.component'
-      ).then((m) => m.TravelPageComponent),
-    outlet: 'main',
-  },
-  {
-    path: 'report',
-    loadChildren: () =>
-      import(
-        './modules/ReportModule/pages/report-page/report-page.component'
-      ).then((m) => m.ReportPageComponent),
-    outlet: 'main',
-  },
-  { path: 'home', component: HomePageComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: LoginPageComponent },
 ];

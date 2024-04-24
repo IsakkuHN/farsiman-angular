@@ -1,10 +1,15 @@
 <div class="sidebar bg-blue-600">
   <ul>
     <li><span class="py-4 text-6xl text-white ">Farsiman</span></li>
-    <li><a routerLink="/collaborator">Colaboradores</a></li>
-    <li><a routerLink="/branch">Sucursales</a></li>
-    <li><a routerLink="/assignment">Trayectos</a></li>
-    <li><a routerLink="/travel">Viajes</a></li>
-    <li><a routerLink="/report">Reportes</a></li>
+    <li><a routerLinkActive="active" routerLink="/home/collaborator">Colaboradores</a></li>
+    <li><a routerLinkActive="active" routerLink="/home/branch">Sucursales</a></li>
+    <li><a routerLinkActive="active" routerLink="/home/driver">Conductores</a></li>
+    <li><a routerLinkActive="active" routerLink="/home/assignment">Trayectos</a></li>
+    <li><a routerLinkActive="active" routerLink="/home/travel">Viajes</a></li>
+    <li><a routerLinkActive="active" routerLink="/home/report">Reportes</a></li>
+    <div class="bottom">
+      <p-button severity="danger" routerLink="/auth">Cerrar Sesión</p-button>
+    </div>
   </ul>
+
 </div>

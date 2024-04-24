@@ -17,6 +17,8 @@
 
 .sidebar ul li {
   padding: 10px;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 .sidebar ul li:last-child {
@@ -32,4 +34,18 @@
 
 .sidebar ul li a:hover {
   color: #ccc;
+}
+
+.bottom {
+  margin-top: 10rem;
+  display: flex;
+  justify-content: center;
+}
+
+.sidebar ul li > a.active {
+  color: var(--bg-blue-600);
+  background-color: #fff;
+  border-radius: 10px;
+  box-sizing: content-box;
+  padding: 0.5rem;
 }
