@@ -8,7 +8,13 @@ import { GlobalConstants } from '../../../utils/global-constants';
 export class TravelService {
   constructor(private httpClient: HttpClient) {}
 
+  ENDPOINT_STRING = GlobalConstants.appUrl + '/travel';
+
   getAllTravels() {
-    return this.httpClient.get(GlobalConstants.appUrl + '/travel');
+    return this.httpClient.get(this.ENDPOINT_STRING);
+  }
+
+  getTravelersByTravelId(travelId: number) {
+    return this.httpClient.get(this.ENDPOINT_STRING + '/travelers/' + travelId);
   }
 }
