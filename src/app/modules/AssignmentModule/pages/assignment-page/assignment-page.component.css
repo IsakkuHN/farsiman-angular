@@ -1,0 +1,15 @@
+.form-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: max-content;
+}
+
+.form-container span {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+
+.form-container span label {
+  margin-bottom: 8px;
+}

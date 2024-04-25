@@ -1,10 +1,42 @@
-<p-dialog header="Formulario de Trayecto" [(visible)]="visible" [style]="{width: '50vw'}" [modal]="true">
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-    magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-  </p>
+<p-toast></p-toast>
+<p-dialog header="Formulario de Trayecto" [(visible)]="visible" [style]="{width: '50vw', height: '50vh'}"
+  [modal]="true">
+  <form [formGroup]="assigmentForm" (ngSubmit)="onSubmit()">
+    <div class="form-container">
+      <span>
+        <label for="">Sucursal</label>
+        <p-dropdown formControlName="branch" [options]="branches" [(ngModel)]="selectedBranch" optionLabel="name"
+          [filter]="true" filterBy="name" [showClear]="true" placeholder="Selectciona la Sucursal">
+          <ng-template pTemplate="selectedItem" let-selectedOption>
+            <div class="flex align-items-center gap-2">
+              <div>{{ selectedOption.name + ' - ' + selectedOption.address}}</div>
+            </div>
+          </ng-template>
+        </p-dropdown>
+      </span>
+      <span>
+        <label for="">Colaborador</label>
+        <p-dropdown formControlName="collaborator" [options]="collaborators" [(ngModel)]="selectedCollaborator"
+          optionLabel="id" [filter]="true" filterBy="name" [showClear]="true" placeholder="Selecciona el Colaborador">
+          <ng-template pTemplate="selectedItem" let-selectedOption>
+            <div class="flex align-items-center gap-2">
+              <div>{{ selectedOption.id.substring(0,8) +' - '+ selectedOption.firstName + ' '+ selectedOption.lastName
+                }}
+              </div>
+            </div>
+          </ng-template>
+        </p-dropdown>
+      </span>
+      <span>
+        <label for="">Distancia</label>
+        <p-inputNumber formControlName="distance" inputId="locale-us" mode="decimal" locale="en-US"
+          [minFractionDigits]="2" [max]="50" [min]="1">
+        </p-inputNumber>
+      </span>
+
+    </div>
+    <p-button label="Guardar trayecto" type="submit"></p-button>
+  </form>
 </p-dialog>
 <div class="card">
   <div class="flex align-items-center justify-content-between my-4">
