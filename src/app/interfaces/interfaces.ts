@@ -65,3 +65,19 @@ export interface Collaborator {
   firstName: string;
   lastName: string;
 }
+
+export interface Assignment {
+  key: Key;
+  distance: number;
+  branch: Branch;
+  collaborator: Collaborator;
+}
+
+export interface TravelRequest {
+  travelDate: string;
+  travelDistance: number;
+  driverId: string;
+  branchId: number;
+  travelers: string[];
+  travelRate: number;
+}

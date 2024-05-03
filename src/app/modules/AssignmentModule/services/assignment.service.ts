@@ -25,4 +25,8 @@ export class AssignmentService {
       distance,
     });
   }
+
+  getAllAssignmentsByBranchId(branchId: number) {
+    return this.httpClient.get(this.ENDPOINT_STRING + '/branch/' + branchId);
+  }
 }

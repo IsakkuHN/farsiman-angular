@@ -11,10 +11,11 @@ import {
   Travel,
   User,
 } from '../../../../interfaces/interfaces';
+import { TravelFormComponent } from '../../components/travel-form/travel-form.component';
 @Component({
   selector: 'app-travel-page',
   standalone: true,
-  imports: [TableModule, ButtonModule, DialogModule],
+  imports: [TableModule, ButtonModule, DialogModule, TravelFormComponent],
   templateUrl: './travel-page.component.html',
   styleUrl: './travel-page.component.css',
 })

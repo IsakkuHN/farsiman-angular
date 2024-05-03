@@ -1,0 +1,28 @@
+.form form {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: max-content;
+  gap: 16px;
+}
+
+.form span {
+  display: flex;
+  flex-direction: column;
+}
+
+.last {
+  grid-column: 1 / 3;
+}
+
+.form-buttons {
+  grid-column: 2 / 3;
+}
+
+.form-buttons p-button {
+  margin-left: 2rem;
+}
+
+.form span label {
+  margin-bottom: 8px;
+}

@@ -1,0 +1,132 @@
+<div class="form">
+  <form [formGroup]="travelForm">
+    <span>
+      <label>Conductor</label>
+      <p-dropdown
+        formControlName="driverId"
+        [options]="drivers"
+        [(ngModel)]="selectedDriver"
+        [filter]="true"
+        filterBy="name"
+        [showClear]="true"
+        placeholder="Seleccione un Conductor"
+        [required]="true"
+      >
+        <ng-template let-driver pTemplate="option">
+          <div>
+            {{ driver.firstName }} {{ driver.lastName }} -
+            {{ driver.id.substring(0, 8) }}
+          </div>
+        </ng-template>
+        <ng-template let-driver pTemplate="selectedItem">
+          <div>
+            {{ driver.firstName }} {{ driver.lastName }} -
+            {{ driver.id.substring(0, 8) }}
+          </div>
+        </ng-template>
+      </p-dropdown>
+    </span>
+    <span>
+      <label>Fecha de viaje</label>
+      <p-calendar
+        dateFormat="yy-mm-dd"
+        formControlName="travelDate"
+        [required]="true"
+        [minDate]="minDate"
+        [defaultDate]="minDate"
+        [readonlyInput]="true"
+        dataType="string"
+      ></p-calendar>
+    </span>
+    <span>
+      <label>Precio por km</label>
+      <p-inputNumber
+        [(ngModel)]="travelRatePerKm"
+        formControlName="travelRate"
+        inputId="locale-us"
+        mode="decimal"
+        locale="en-US"
+        [minFractionDigits]="2"
+        [required]="true"
+      >
+      </p-inputNumber>
+    </span>
+    <span>Distancia total del recorrido: {{ travelDistance }} km</span>
+    <span
+      ><label>Sucursal asignada</label>
+      <p-dropdown
+        [required]="true"
+        formControlName="branchId"
+        [options]="branches"
+        [(ngModel)]="selectedBranch"
+        optionLabel="name"
+        [filter]="true"
+        filterBy="name"
+        [showClear]="true"
+        placeholder="Seleccione una sucursal"
+        (onChange)="
+          loadCollaborators(selectedBranch.id);
+          selectedCollaborators = [];
+          travelDistance = 0
+        "
+        (onClear)="
+          assigments = []; selectedCollaborators = []; travelDistance = 0
+        "
+      >
+      </p-dropdown>
+    </span>
+    <span class="last">
+      <label>Lista de colaboradores asistentes</label>
+      <div class="card">
+        <p-table
+          [value]="assigments"
+          [(selection)]="selectedCollaborators"
+          dataKey="id"
+          [tableStyle]="{ 'min-width': '50rem' }"
+          [paginator]="true"
+          [rows]="5"
+          [showCurrentPageReport]="true"
+          currentPageReportTemplate="{first} de {last} de {totalRecords} colaboradores en la sucursal"
+          [rowsPerPageOptions]="[5, 10, 20]"
+          (onRowSelect)="selectedRow($event)"
+          (onRowUnselect)="unselectedRow($event)"
+          [selectAll]="unselectTravelers"
+        >
+          <ng-template pTemplate="header">
+            <tr>
+              <th style="width: 4rem"></th>
+              <th>Codigo</th>
+              <th>Nombre</th>
+              <th>Apellido</th>
+              <th>Distancia</th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-assignment>
+            <tr>
+              <td>
+                <p-tableCheckbox
+                  [value]="assignment.collaborator"
+                ></p-tableCheckbox>
+              </td>
+              <td>{{ assignment.collaborator.id.substring(0, 8) }}</td>
+              <td>{{ assignment.collaborator.firstName }}</td>
+              <td>{{ assignment.collaborator.lastName }}</td>
+              <td>{{ assignment.distance }}</td>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="emptymessage">
+            <tr>
+              <td colspan="5">
+                Seleccione una sucursal para cargar los colaboradores
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </span>
+    <div class="form-buttons">
+      <p-button label="Cancelar" severity="danger" />
+      <p-button label="Guardar Viaje" type="submit" (onClick)="sendTravel()" />
+    </div>
+  </form>
+</div>

@@ -8,7 +8,9 @@ import { GlobalConstants } from '../../../utils/global-constants';
 export class BranchService {
   constructor(private httpClient: HttpClient) {}
 
+  ENDPOINT_STRING = GlobalConstants.appUrl + '/branch';
+
   getAllBranches() {
-    return this.httpClient.get(GlobalConstants.appUrl + '/branch');
+    return this.httpClient.get(this.ENDPOINT_STRING);
   }
 }
